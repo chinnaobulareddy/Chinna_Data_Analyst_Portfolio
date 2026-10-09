@@ -367,25 +367,94 @@ function initCertModals() {
    =================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');
+  const statusBox = document.getElementById('contactFormStatus');
+  const submitBtn = document.getElementById('btnSubmitContact');
+
+  function showStatus(type, html) {
+    if (!statusBox) return;
+    statusBox.className = `form-status-msg ${type}`;
+    statusBox.innerHTML = html;
+    statusBox.style.display = 'flex';
+  }
+
+  function hideStatus() {
+    if (!statusBox) return;
+    statusBox.style.display = 'none';
+    statusBox.innerHTML = '';
+  }
+
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = document.getElementById('senderName')?.value || '';
-      const email = document.getElementById('senderEmail')?.value || '';
-      const message = document.getElementById('senderMessage')?.value || '';
+
+      const name = document.getElementById('senderName')?.value.trim() || '';
+      const email = document.getElementById('senderEmail')?.value.trim() || '';
+      const message = document.getElementById('senderMessage')?.value.trim() || '';
 
       if (!name || !email || !message) {
+        showStatus('error', '<i class="fa-solid fa-circle-exclamation" style="margin-top: 2px;"></i> <span>Please fill in all required fields.</span>');
         showToast('Please fill out all required fields.');
         return;
       }
 
-      // Generate mailto link
-      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-      const body = encodeURIComponent(`Hi Chinna,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-      window.location.href = `mailto:chinnaobulareddy66@gmail.com?subject=${subject}&body=${body}`;
+      // If viewing directly as local file:/// (FormSubmit requires HTTP/HTTPS origin)
+      if (window.location.protocol === 'file:') {
+        showStatus('info', '<i class="fa-solid fa-circle-info" style="margin-top: 2px;"></i> <span>Direct web form sending works on live websites (GitHub Pages) or local servers (localhost). Opening your email app as fallback...</span>');
+        const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+        const body = encodeURIComponent(`Hi Chinna,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:chinnaobulareddy66@gmail.com?subject=${subject}&body=${body}`;
+        return;
+      }
 
-      showToast('Thank you! Opening your email client to send message.');
-      form.reset();
+      // Set loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending Message...</span>';
+      }
+      hideStatus();
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/chinnaobulareddy66@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+            _subject: `New Portfolio Message from ${name}!`,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && (data.success === 'true' || data.success === true)) {
+          showStatus('success', '<i class="fa-solid fa-circle-check" style="margin-top: 2px;"></i> <span><strong>Message Sent!</strong> Thank you ' + name + ', your message has been delivered directly to Chinna. You will receive a response soon.</span>');
+          showToast('Message sent successfully to Chinna!');
+          form.reset();
+        } else if (data.message && data.message.toLowerCase().includes('activation')) {
+          showStatus('info', '<i class="fa-solid fa-bell" style="margin-top: 2px;"></i> <span><strong>One-Time Activation Required:</strong> FormSubmit sent an activation link to <strong>chinnaobulareddy66@gmail.com</strong>. Please check your inbox (or Spam folder) and click <em>"Activate Form"</em>. After clicking it once, all messages will be received automatically!</span>');
+          showToast('Check chinnaobulareddy66@gmail.com to activate form!');
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch (err) {
+        console.warn('FormSubmit AJAX fallback:', err);
+        showStatus('info', '<i class="fa-solid fa-envelope" style="margin-top: 2px;"></i> <span>Direct web service unavailable, launching email client to send to chinnaobulareddy66@gmail.com...</span>');
+        const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+        const body = encodeURIComponent(`Hi Chinna,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:chinnaobulareddy66@gmail.com?subject=${subject}&body=${body}`;
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Send Message</span>';
+        }
+      }
     });
   }
 

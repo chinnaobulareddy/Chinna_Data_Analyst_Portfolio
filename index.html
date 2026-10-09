@@ -860,16 +860,19 @@
         <!-- Quick Interactive Message Form (PRD 8 F10) -->
         <div class="quick-message-form">
           <h4 class="form-title">Send a Quick Direct Message</h4>
-          <form id="contactForm">
+          <form id="contactForm" action="https://formsubmit.co/chinnaobulareddy66@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="New Portfolio Message - Chinna Obula Reddy">
             <div class="form-grid">
               <div>
-                <input type="text" class="form-input" id="senderName" placeholder="Your Name" required>
+                <input type="text" class="form-input" id="senderName" name="name" placeholder="Your Name" required>
               </div>
               <div>
-                <input type="email" class="form-input" id="senderEmail" placeholder="Your Email Address" required>
+                <input type="email" class="form-input" id="senderEmail" name="email" placeholder="Your Email Address" required>
               </div>
               <div class="form-group-full">
-                <textarea class="form-textarea" id="senderMessage" placeholder="Your Message or Inquiry..."
+                <textarea class="form-textarea" id="senderMessage" name="message" placeholder="Your Message or Inquiry..."
                   required></textarea>
               </div>
             </div>
@@ -877,6 +880,7 @@
               <i class="fa-solid fa-paper-plane"></i>
               <span>Send Message</span>
             </button>
+            <div id="contactFormStatus" class="form-status-msg" style="display: none;"></div>
           </form>
         </div>
 
