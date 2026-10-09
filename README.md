@@ -65,7 +65,9 @@ Welcome to the official repository for **Chinna Obula Reddy's** personal portfol
 │   └── images/
 │       ├── profile.jpg                  # Candidate profile photograph
 │       ├── airline_delay_dashboard.jpg  # Power BI airline dashboard preview
-│       └── bank_loan_dashboard.jpg      # Financial risk analytics dashboard preview
+│       ├── bank_loan_dashboard.jpg      # Financial risk analytics dashboard preview
+│       ├── excelr_certificate.png       # ExcelR Data Analyst Program credential
+│       └── cisco_certificate.png        # Cisco Data Analytics Essentials credential
 └── README.md                            # Repository documentation
 ```
 

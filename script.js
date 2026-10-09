@@ -257,15 +257,108 @@ function renderProjectModal(data) {
 }
 
 /* ===================================================================
-   6. CERTIFICATION MODALS / LINKS (F12)
+   6. CERTIFICATION LIGHTBOX MODAL & CREDENTIAL SYSTEM (F12)
    =================================================================== */
+const certData = {
+  excelr: {
+    title: "ExcelR – Certificate of Excellence (Data Analyst Program)",
+    issuer: "ExcelR Solutions • Director: Ram Tavva",
+    date: "16th October 2025",
+    id: "30331/EXCELR/16102025",
+    recipient: "Beemireddy Chinna Obula Reddy",
+    image: "assets/images/excelr_certificate.png",
+    driveUrl: "https://drive.google.com/file/d/1OzrMr8UsDxYfTLlWLnKy9gFDyfO4SAos/view"
+  },
+  cisco: {
+    title: "Cisco – Data Analytics Essentials",
+    issuer: "Cisco Networking Academy • Director: Lynn Bloomer",
+    date: "20th October 2025",
+    id: "Cisco Networking Academy Professional Credential",
+    recipient: "Bheemireddy Chinna obula reddy",
+    image: "assets/images/cisco_certificate.png",
+    driveUrl: "https://drive.google.com/file/d/1bD_s4WVyig8LFR8BWr3lrBSrsKLDaPhG/view"
+  }
+};
+
 function initCertModals() {
-  document.querySelectorAll('[data-cert]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  const modalOverlay = document.getElementById('certModalOverlay');
+  const modalCloseBtn = document.getElementById('certModalCloseBtn');
+  const modalCloseBottomBtn = document.getElementById('certModalCloseBottomBtn');
+
+  if (!modalOverlay) return;
+
+  function openCertModal(key) {
+    const data = certData[key];
+    if (!data) return;
+
+    const img = document.getElementById('certModalImg');
+    const title = document.getElementById('certModalTitle');
+    const issuer = document.getElementById('certModalIssuer');
+    const meta = document.getElementById('certModalMeta');
+    const driveLink = document.getElementById('certModalDriveLink');
+    const downloadLink = document.getElementById('certModalDownloadLink');
+
+    if (img) {
+      img.src = data.image;
+      img.alt = `${data.title} - ${data.recipient}`;
+    }
+    if (title) title.textContent = data.title;
+    if (issuer) issuer.textContent = data.issuer;
+    if (meta) {
+      meta.innerHTML = `
+        <span><i class="fa-regular fa-calendar-check" style="color: #2563EB;"></i> <strong>Completion Date:</strong> ${data.date}</span>
+        <span><i class="fa-solid fa-id-badge" style="color: #2563EB;"></i> <strong>Certificate ID:</strong> ${data.id}</span>
+        <span><i class="fa-solid fa-user-graduate" style="color: #2563EB;"></i> <strong>Candidate:</strong> ${data.recipient}</span>
+      `;
+    }
+    if (driveLink) {
+      driveLink.href = data.driveUrl;
+    }
+    if (downloadLink) {
+      downloadLink.href = data.image;
+      downloadLink.download = `${key}_certificate.png`;
+    }
+
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCertModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Handle click on any element with data-cert-key (images, badges, preview buttons)
+  document.querySelectorAll('[data-cert-key]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (el.tagName === 'A' && el.getAttribute('target') === '_blank') return;
       e.preventDefault();
-      const certName = btn.getAttribute('data-cert');
-      showToast(`Verified credential for: ${certName}`);
+      const key = el.getAttribute('data-cert-key');
+      openCertModal(key);
     });
+  });
+
+  // Handle backward compatibility for any data-cert elements
+  document.querySelectorAll('[data-cert]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const certAttr = (el.getAttribute('data-cert') || '').toLowerCase();
+      const key = certAttr.includes('cisco') ? 'cisco' : 'excelr';
+      openCertModal(key);
+    });
+  });
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeCertModal);
+  if (modalCloseBottomBtn) modalCloseBottomBtn.addEventListener('click', closeCertModal);
+
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeCertModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeCertModal();
+    }
   });
 }
 

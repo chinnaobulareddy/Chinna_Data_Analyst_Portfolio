@@ -688,6 +688,13 @@
 
         <!-- Cert 1: ExcelR -->
         <div class="cert-card">
+          <div class="cert-media-wrap" data-cert-key="excelr" title="Click to view ExcelR certificate">
+            <img src="assets/images/excelr_certificate.png" alt="ExcelR Data Analyst Program Certificate - Chinna Obula Reddy" class="cert-thumb-img">
+            <span class="cert-media-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+            <div class="cert-media-overlay">
+              <span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+            </div>
+          </div>
           <div class="cert-header">
             <div class="cert-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
             <div>
@@ -700,17 +707,31 @@
             Excel functions, interactive dashboard construction in Power BI and Tableau, and real-world business case
             studies.
           </p>
+          <div class="cert-meta-tag-row">
+            <span class="cert-id-tag"><i class="fa-solid fa-id-badge"></i> ID: 30331/EXCELR/16102025</span>
+            <span class="cert-date-tag"><i class="fa-regular fa-calendar-check"></i> 16 Oct 2025</span>
+          </div>
           <div class="cert-action-row">
-            <span class="pill-tag">Verified Certificate</span>
-            <a href="#" class="cert-verify-link" data-cert="ExcelR Data Analyst Program">
-              <span>View Credential</span>
+            <button type="button" class="pill-tag" data-cert-key="excelr" title="View Verified Certificate">
+              <i class="fa-solid fa-certificate"></i>
+              <span>Verified Certificate</span>
+            </button>
+            <a href="https://drive.google.com/file/d/1OzrMr8UsDxYfTLlWLnKy9gFDyfO4SAos/view" target="_blank" rel="noopener noreferrer" class="btn-cert-drive" title="View Official Credential on Google Drive">
               <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <span>View Credential</span>
             </a>
           </div>
         </div>
 
         <!-- Cert 2: Cisco -->
         <div class="cert-card">
+          <div class="cert-media-wrap" data-cert-key="cisco" title="Click to view Cisco certificate">
+            <img src="assets/images/cisco_certificate.png" alt="Cisco Data Analytics Essentials Certificate - Chinna Obula Reddy" class="cert-thumb-img">
+            <span class="cert-media-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+            <div class="cert-media-overlay">
+              <span class="cert-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> View Certificate</span>
+            </div>
+          </div>
           <div class="cert-header">
             <div class="cert-icon-box"><i class="fa-solid fa-network-wired"></i></div>
             <div>
@@ -722,11 +743,18 @@
             Industry training covering exploratory data analysis, data lifecycle pipelines, statistical distributions,
             data preparation frameworks, and visualization methodologies for data-driven strategic decisions.
           </p>
+          <div class="cert-meta-tag-row">
+            <span class="cert-id-tag"><i class="fa-solid fa-award"></i> Cisco Networking Academy</span>
+            <span class="cert-date-tag"><i class="fa-regular fa-calendar-check"></i> 20 Oct 2025</span>
+          </div>
           <div class="cert-action-row">
-            <span class="pill-tag">Verified Certificate</span>
-            <a href="#" class="cert-verify-link" data-cert="Cisco Data Analytics Essentials">
-              <span>View Credential</span>
+            <button type="button" class="pill-tag" data-cert-key="cisco" title="View Verified Certificate">
+              <i class="fa-solid fa-certificate"></i>
+              <span>Verified Certificate</span>
+            </button>
+            <a href="https://drive.google.com/file/d/1bD_s4WVyig8LFR8BWr3lrBSrsKLDaPhG/view" target="_blank" rel="noopener noreferrer" class="btn-cert-drive" title="View Official Credential on Google Drive">
               <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <span>View Credential</span>
             </a>
           </div>
         </div>
@@ -915,6 +943,41 @@
           </a>
           <button type="button" class="btn btn-secondary" onclick="document.getElementById('modalCloseBtn').click()">
             <span>Close Details</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       CERTIFICATE LIGHTBOX MODAL
+       =================================================================== -->
+  <div class="modal-overlay" id="certModalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog cert-modal-dialog" id="certModalDialog">
+      <button class="modal-close-btn" id="certModalCloseBtn" aria-label="Close certificate modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="cert-modal-img-wrap">
+        <img src="" alt="Certificate Preview" class="cert-modal-img" id="certModalImg">
+      </div>
+
+      <div class="modal-body cert-modal-body">
+        <span class="modal-header-tag" id="certModalIssuer">Credential</span>
+        <h3 class="modal-title" id="certModalTitle" style="margin-bottom: 8px;">Certificate Title</h3>
+        <div class="cert-modal-meta" id="certModalMeta"></div>
+
+        <div class="modal-footer-actions cert-modal-actions" style="margin-top: 24px;">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="certModalDriveLink">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Open in Google Drive</span>
+          </a>
+          <a href="#" download class="btn btn-secondary" id="certModalDownloadLink">
+            <i class="fa-solid fa-download"></i>
+            <span>Download Image</span>
+          </a>
+          <button type="button" class="btn btn-secondary" id="certModalCloseBottomBtn">
+            <span>Close</span>
           </button>
         </div>
       </div>
