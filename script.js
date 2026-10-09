@@ -424,6 +424,7 @@ function initContactForm() {
             name: name,
             email: email,
             message: message,
+            _replyto: email,
             _subject: `New Portfolio Message from ${name}!`,
             _template: 'table',
             _captcha: 'false'
@@ -433,8 +434,8 @@ function initContactForm() {
         const data = await response.json();
 
         if (response.ok && (data.success === 'true' || data.success === true)) {
-          showStatus('success', '<i class="fa-solid fa-circle-check" style="margin-top: 2px;"></i> <span><strong>Message Sent!</strong> Thank you ' + name + ', your message has been delivered directly to Chinna. You will receive a response soon.</span>');
-          showToast('Message sent successfully to Chinna!');
+          showStatus('success', '<i class="fa-solid fa-circle-check" style="margin-top: 2px;"></i> <span><strong>Message Sent Successfully!</strong> Thank you ' + name + ', your message has been delivered to Chinna.</span>');
+          showToast('Message sent successfully!');
           form.reset();
         } else if (data.message && data.message.toLowerCase().includes('activation')) {
           showStatus('info', '<i class="fa-solid fa-bell" style="margin-top: 2px;"></i> <span><strong>One-Time Activation Required:</strong> FormSubmit sent an activation link to <strong>chinnaobulareddy66@gmail.com</strong>. Please check your inbox (or Spam folder) and click <em>"Activate Form"</em>. After clicking it once, all messages will be received automatically!</span>');
