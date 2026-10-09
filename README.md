@@ -91,6 +91,7 @@ Open your browser and navigate to `http://localhost:3000`.
 ## 📬 Contact Information
 
 - **Name:** Chinna Obula Reddy
+- **Location:** Bengaluru, India (Open to Relocate / Remote)
 - **Email:** [chinnaobulareddy66@gmail.com](mailto:chinnaobulareddy66@gmail.com)
 - **Phone:** [+91-6301480507](tel:+916301480507)
 - **LinkedIn:** [linkedin.com/in/chinna-obula-reddy](https://linkedin.com/in/chinna-obula-reddy)
