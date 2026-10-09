@@ -26,12 +26,14 @@ Welcome to the official repository for **Chinna Obula Reddy's** personal portfol
 
 ## 💼 Featured Case Studies
 
-### 1. [US Airline Performance Delay Analysis 2015](assets/images/airline_delay_dashboard.jpg)
+### 1. [US Airline Performance Delay Analysis 2015](https://github.com/chinnaobulareddy/U.S---Airline-Performance-Delay-Analysis-2015)
+- **Repository:** [GitHub](https://github.com/chinnaobulareddy/U.S---Airline-Performance-Delay-Analysis-2015)
 - **Domain:** Aviation Analytics & Operational Efficiency
 - **Tech Stack:** Python, MySQL, Power BI, Pandas, Seaborn
 - **Description:** Analyzed 5.8M+ flight records to discover delay bottlenecks across major US carriers. Engineered SQL queries and built an interactive Power BI dashboard tracking on-time performance (OTP), delay attribution (Late Aircraft, Weather, NAS), and airport turnaround delays.
 
-### 2. [Bank Loan Performance & Risk Analysis](assets/images/bank_loan_dashboard.jpg)
+### 2. [Bank Loan Performance & Risk Analysis](https://github.com/chinnaobulareddy/Bank_Loan_Analytics)
+- **Repository:** [GitHub](https://github.com/chinnaobulareddy/Bank_Loan_Analytics)
 - **Domain:** Financial Analytics & Credit Risk Modeling
 - **Tech Stack:** SQL, Power BI, Excel, Tableau, Financial Modeling
 - **Description:** Segmented large loan portfolios into Good vs. Bad loans to assess default probabilities across borrower grades (A through G), debt-to-income (DTI) metrics, and home ownership. Delivered executive dashboards tracking $248M+ in funded loans.

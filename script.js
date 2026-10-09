@@ -143,7 +143,7 @@ const projectData = {
       "Certain regional carriers achieved over 85% On-Time Performance (OTP) by optimizing turnaround buffer times between high-traffic hub airports."
     ],
     tech: ["Python", "Pandas", "NumPy", "MySQL", "Power BI", "DAX", "Data Modeling"],
-    githubUrl: "https://github.com/chinnaobulareddy/Chinna_Data_Analyst_Portfolio"
+    githubUrl: "https://github.com/chinnaobulareddy/U.S---Airline-Performance-Delay-Analysis-2015"
   },
   bankLoan: {
     title: "Bank Loan Risk & Performance Analysis",
@@ -164,7 +164,7 @@ const projectData = {
       "Debt consolidation represented over 55% of all loan applications, while small business loans experienced higher volatility during economic contractions."
     ],
     tech: ["SQL", "Power BI", "Tableau", "Advanced Excel", "Power Query", "Financial Modeling"],
-    githubUrl: "https://github.com/chinnaobulareddy/Chinna_Data_Analyst_Portfolio"
+    githubUrl: "https://github.com/chinnaobulareddy/Bank_Loan_Analytics"
   }
 };
 
